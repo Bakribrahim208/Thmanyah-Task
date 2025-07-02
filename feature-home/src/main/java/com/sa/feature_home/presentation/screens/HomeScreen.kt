@@ -30,7 +30,7 @@ import com.sa.feature_home.presentation.components.ErrorContent
 import com.sa.feature_home.presentation.model.HomeIntent
 import com.sa.feature_home.presentation.model.HomeUiEffect
 import com.sa.thmanyah.feature.home.presentation.ui.SectionContainerItem
-import com.sa.thmanyah.feature.home.presentation.viewmodel.HomeViewModel
+import com.sa.feature_home.presentation.viewmodel.HomeViewModel
 import kotlinx.coroutines.flow.collectLatest
 import retrofit2.HttpException
 import java.io.IOException

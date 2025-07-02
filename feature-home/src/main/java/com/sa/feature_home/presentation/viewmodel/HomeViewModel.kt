@@ -1,10 +1,10 @@
-package com.sa.thmanyah.feature.home.presentation.viewmodel
+package com.sa.feature_home.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.sa.thmanyah.feature.home.domain.usecase.GetHomeSectionsUseCase
+import com.sa.feature_home.domain.usecase.GetHomeSectionsUseCase
 import com.sa.feature_home.presentation.model.HomeError
 import com.sa.feature_home.presentation.model.HomeIntent
 import com.sa.feature_home.presentation.model.HomeUiEffect
