@@ -5,8 +5,9 @@ import com.sa.feature_home.data.model.HomeResponse
 import com.sa.feature_home.data.model.Section
 import com.sa.feature_home.data.source.HomePagingSource
 import com.sa.feature_home.data.source.remote.HomeApiService
+import com.sa.feature_home.domain.entities.ContentType
 import com.sa.feature_home.domain.entities.HomeSectionEntity
-
+import com.sa.feature_home.domain.entities.SectionType
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
@@ -46,7 +47,15 @@ class HomePagingSourceTest {
         coEvery { api.getHomeSections(1) } returns response
 
         val expectedResult = PagingSource.LoadResult.Page(
-            data = listOf(HomeSectionEntity(order =1, name = "Popular")),
+            data = listOf(
+                HomeSectionEntity(
+                    order = 1,
+                    name = "Popular",
+                    content = emptyList(),
+                    contentType = ContentType.UNKNOWN,
+                    type = SectionType.UNKNOWN
+                )
+            ),
             prevKey = null,
             nextKey = 2
         )
@@ -66,7 +75,7 @@ class HomePagingSourceTest {
     fun `load returns empty page when API returns null section list`() = runTest {
         val response = HomeResponse(
             pagination = null,
-            sections = null
+            sections = emptyList()
         )
         coEvery { api.getHomeSections(1) } returns response
 
