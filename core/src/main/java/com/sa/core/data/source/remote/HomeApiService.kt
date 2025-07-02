@@ -12,7 +12,7 @@ interface HomeApiService {
         @Query("page") page: Int
     ): HomeResponse
 
-    @GET(" https://api-v2-b2sit6oh3a-uc.a.run.app/home_sections?")
+    @GET("https://api-v2-b2sit6oh3a-uc.a.run.app/home_sections?")
     suspend fun sectionSearch(
         @Query("page") page: Int, @Query("name") query: String?
     ): HomeResponse
