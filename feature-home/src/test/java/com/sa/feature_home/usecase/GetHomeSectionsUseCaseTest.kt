@@ -3,9 +3,9 @@ package com.sa.feature_home.usecase
 import androidx.paging.PagingData
 import app.cash.turbine.test
 import com.sa.core.domain.error.DomainError
-import com.sa.feature_home.domain.entities.ContentType
-import com.sa.feature_home.domain.entities.HomeSectionEntity
-import com.sa.feature_home.domain.entities.SectionType
+import com.sa.core.domain.entities.ContentType
+import com.sa.core.domain.entities.HomeSectionEntity
+import com.sa.core.domain.entities.SectionType
 import com.sa.feature_home.domain.repository.HomeRepository
 import com.sa.feature_home.domain.usecase.GetHomeSectionsUseCase
 import io.mockk.coEvery

@@ -2,7 +2,7 @@ package com.sa.feature_home.domain.usecase
 
 import androidx.paging.PagingData
 import com.sa.core.domain.error.DomainError
-import com.sa.feature_home.domain.entities.HomeSectionEntity
+import com.sa.core.domain.entities.HomeSectionEntity
 import com.sa.feature_home.domain.repository.HomeRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

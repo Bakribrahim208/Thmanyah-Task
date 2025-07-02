@@ -48,6 +48,7 @@ dependencies {
 
     // Feature modules
     implementation(project(":feature-home"))
+    implementation(project(":feature-search"))
     implementation(project(":core"))
 
     implementation(libs.androidx.core.ktx)
@@ -72,4 +73,7 @@ dependencies {
     implementation(libs.google.dagger.hilt)
     implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.google.dagger.hilt.compiler)
+
+    // DataStore for theme preferences
+    implementation(libs.storage.perferance)
 }

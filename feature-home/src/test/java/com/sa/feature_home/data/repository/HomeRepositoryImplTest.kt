@@ -2,11 +2,11 @@ package com.sa.feature_home.data.repository
 
 import androidx.paging.PagingData
 import androidx.paging.PagingSource
-import com.sa.feature_home.data.model.HomeResponse
-import com.sa.feature_home.data.model.Section
+import com.sa.core.data.model.HomeResponse
+import com.sa.core.data.model.Section
 import com.sa.feature_home.data.source.HomePagingSource
-import com.sa.feature_home.data.source.remote.HomeApiService
-import com.sa.feature_home.domain.entities.HomeSectionEntity
+import com.sa.core.data.source.remote.HomeApiService
+import com.sa.core.domain.entities.HomeSectionEntity
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk

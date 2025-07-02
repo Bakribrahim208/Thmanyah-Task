@@ -1,7 +1,7 @@
 package com.sa.feature_home.domain.repository
 
 import androidx.paging.PagingData
-import com.sa.feature_home.domain.entities.HomeSectionEntity
+import com.sa.core.domain.entities.HomeSectionEntity
 import kotlinx.coroutines.flow.Flow
 
 interface HomeRepository {

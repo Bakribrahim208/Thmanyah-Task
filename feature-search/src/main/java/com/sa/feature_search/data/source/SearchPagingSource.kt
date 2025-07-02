@@ -1,4 +1,4 @@
-package com.sa.feature_home.data.source
+package com.sa.feature_search.data.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -9,16 +9,17 @@ import java.io.IOException
 import kotlin.collections.mapNotNull
 import kotlin.let
 
-class HomePagingSource(
-    private val api: HomeApiService
+class SearchPagingSource(
+    private val api: HomeApiService,
+    private val query: String
 ) : PagingSource<Int, HomeSectionEntity>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, HomeSectionEntity> {
         val page = params.key ?: 1
 
         return try {
-            val response = api.getHomeSections(page = page)
-            val sections = response.sections?.mapNotNull { it?.toDomain() } ?: emptyList()
+            val response = api.sectionSearch(page = page, query = query)
+            val sections = response.sections.mapNotNull { it.toDomain() }
 
             LoadResult.Page(
                 data = sections,
