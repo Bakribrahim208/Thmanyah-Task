@@ -75,5 +75,5 @@ dependencies {
     kapt(libs.google.dagger.hilt.compiler)
 
     // DataStore for theme preferences
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation(libs.storage.perferance)
 }

@@ -37,6 +37,7 @@ import com.sa.feature_home.presentation.screens.HomeScreen
 import com.sa.feature_search.presentation.screens.SearchScreen
 import com.sa.thmanyahtast.navigation.BottomNavBar
 import com.sa.thmanyahtast.navigation.BottomNavItem
+import com.sa.thmanyahtast.presentation.screens.ProfileScreen
 import com.sa.thmanyahtast.presentation.ui.AppToolBar
 import com.sa.thmanyahtast.presentation.viewmodel.ThemeViewModel
 import com.sa.thmanyahtast.utils.systemAwarePadding
@@ -96,7 +97,7 @@ class MainActivity : ComponentActivity() {
                                     Text(text = "Play")
                                 }
                                 composable<MainNavigationRoute.Profile> {
-                                    Text(text = "Profile")
+                                    ProfileScreen()
                                 }
                             }
                         }

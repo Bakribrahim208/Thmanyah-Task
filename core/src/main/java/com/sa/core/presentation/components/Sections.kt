@@ -44,7 +44,7 @@ fun SectionContainerItem(
                 .fillMaxWidth()
                 .padding(vertical = 8.dp, horizontal = 16.dp),
             title = section.title,
-            titleColor = Color.Black
+            titleColor = MaterialTheme.colorScheme.onBackground
         )
 
         when (section.type) {
