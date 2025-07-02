@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "ThmanyahTast"
 include(":app")
- 
+include(":feature-home")
