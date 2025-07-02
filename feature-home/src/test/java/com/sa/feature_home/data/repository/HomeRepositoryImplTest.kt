@@ -2,7 +2,11 @@ package com.sa.feature_home.data.repository
 
 import androidx.paging.PagingData
 import androidx.paging.PagingSource
+import com.sa.feature_home.data.model.HomeResponse
+import com.sa.feature_home.data.model.Section
+import com.sa.feature_home.data.source.HomePagingSource
 import com.sa.feature_home.data.source.remote.HomeApiService
+import com.sa.feature_home.domain.entities.HomeSectionEntity
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -31,11 +35,7 @@ class HomeRepositoryImplTest {
         // Arrange
         val mockSections = listOf(
             Section(
-                content = null,
-                contentType = "type",
-                name = "Popular",
-                order = 1,
-                type = "section"
+                content = null, contentType = "type", name = "Popular", order = 1, type = "section"
             )
         )
         val response = HomeResponse(null, mockSections)
@@ -55,11 +55,7 @@ class HomeRepositoryImplTest {
         // Arrange - Setup our mock API
         val mockSections = listOf(
             Section(
-                content = null,
-                contentType = "type",
-                name = "Popular",
-                order = 1,
-                type = "section"
+                content = null, contentType = "type", name = "Popular", order = 1, type = "section"
             )
         )
         val response = HomeResponse(null, mockSections)
@@ -79,9 +75,7 @@ class HomeRepositoryImplTest {
 
         // Act - Trigger the load directly on the paging source
         val loadParams = PagingSource.LoadParams.Refresh(
-            key = 1,
-            loadSize = 20,
-            placeholdersEnabled = false
+            key = 1, loadSize = 20, placeholdersEnabled = false
         )
 
         testRepo.pagingSource.load(loadParams)
