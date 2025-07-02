@@ -13,43 +13,56 @@ project-root/
 │       └── Dependencies.kt       # Centralized dependency declarations
 │
 ├── app/                          # Main application module
+│   ├── build.gradle.kts
+│   ├── proguard-rules.pro
 │   ├── src/
+│   │   ├── androidTest/
 │   │   ├── main/
-│   │   │   ├── java/            # Java and Kotlin source files
-│   │   │   │   └── com/example/app/
-│   │   │   │       ├── di/      # Dependency injection
-│   │   │   │       ├── ui/      # UI components
-│   │   │   │       ├── data/    # Data handling
-│   │   │   │       └── domain/  # Business logic
-│   │   │   ├── res/             # Resources
-│   │   │   └── AndroidManifest.xml
-│   │   ├── test/                # Unit tests
-│   │   └── androidTest/         # Instrumentation tests
+│   │   │   ├── data/             # Data layer (network, db, repository)
+│   │   │   ├── domain/           # Domain layer (use cases, models)
+│   │   │   ├── presentation/     # Presentation layer (UI, ViewModels)
+│   │   └── test/
 │   └── build.gradle
 │
 ├── core/                         # Core module with shared functionality
+│   ├── build.gradle.kts
+│   ├── proguard-rules.pro
 │   ├── src/
+│   │   ├── androidTest/
+│   │   ├── main/
+│   │   │   ├── data/
+│   │   │   ├── domain/
+│   │   │   ├── presentation/
+│   │   └── test/
 │   └── build.gradle
 │
-├── feature_modules/             # Feature modules (following modularization)
-│   ├── feature1/
-│   │   ├── src/
-│   │   └── build.gradle
-│   └── feature2/
-│       ├── src/
-│       └── build.gradle
-│
-├── data/                        # Data layer module
+├── feature-home/                 # Home feature module
+│   ├── build.gradle.kts
+│   ├── proguard-rules.pro
 │   ├── src/
+│   │   ├── androidTest/
+│   │   ├── main/
+│   │   │   ├── data/
+│   │   │   ├── domain/
+│   │   │   ├── presentation/
+│   │   └── test/
 │   └── build.gradle
 │
-├── domain/                      # Domain layer module
+├── feature-search/               # Search feature module
+│   ├── build.gradle.kts
+│   ├── proguard-rules.pro
 │   ├── src/
+│   │   ├── androidTest/
+│   │   ├── main/
+│   │   │   ├── data/
+│   │   │   ├── domain/
+│   │   │   ├── presentation/
+│   │   └── test/
 │   └── build.gradle
 │
-├── build.gradle                 # Project-level build script
-├── settings.gradle              # Project settings
-├── gradle.properties            # Gradle properties
+├── build.gradle.kts              # Project-level build script
+├── settings.gradle.kts           # Project settings
+├── gradle.properties             # Gradle properties
 ├── gradlew                      # Gradle wrapper script
 └── gradlew.bat                  # Gradle wrapper script for Windows
 ```
@@ -110,7 +123,7 @@ project-root/
 
 1. **Clone the repository:**
    ```sh
-   git clone <repo-url>
+   git clone https://github.com/Bakribrahim208/Thmanyah-Task.git
    ```
 2. **Open in Android Studio.**
 3. **Sync Gradle and build the project.**
