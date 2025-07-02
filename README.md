@@ -97,16 +97,19 @@ project-root/
 - Unit and instrumentation testing with JUnit and Mockk
 - Paging support for large data sets
 - Navigation handled by Jetpack's Navigation component
+- Comprehensive error handling for server and network issues
 
 ---
 
 ## Enhancement Opportunities
 
+- Add offline functionality to allow users to access the app without an internet connection
+- Enable podcast streaming capabilities
 - Increase test coverage for better reliability
-- Implement content type filters on the home screen (e.g., filter by Podcasts, Episodes, etc.)
-- Improve home screen design and user experience
-- Add animations and visual effects for a more engaging UI
-- Establish a solid architectural foundation for future scalability (current base is minimal due to project scope)
+- Add content filtering options on the home screen by type (e.g., Podcasts, Episodes)
+- Enhance home screen design and overall user experience
+- Integrate animations and visual effects for a more dynamic UI
+- Establish a robust architectural foundation to support future scalability (current base is minimal due to project scope)
 
 ---
 
@@ -119,12 +122,8 @@ project-root/
 
 ---
 
-## Getting Started
+## Demo Video
 
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/Bakribrahim208/Thmanyah-Task.git
-   ```
-2. **Open in Android Studio.**
-3. **Sync Gradle and build the project.**
-4. **Run the app on an emulator or device.**
+https://github.com/Bakribrahim208/Thmanyah-Task/assets/main/Screen_recording_20250702_224117.mp4
+
+---
