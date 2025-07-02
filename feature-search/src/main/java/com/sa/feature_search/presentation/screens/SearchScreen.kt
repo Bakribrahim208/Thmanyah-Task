@@ -1,4 +1,4 @@
-package com.sa.feature_home.presentation.screens
+package com.sa.feature_search.presentation.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -7,8 +7,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
@@ -21,23 +30,26 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.sa.core.presentation.components.EmptyContent
 import com.sa.core.presentation.components.ErrorContent
-import com.sa.feature_home.presentation.model.HomeIntent
-import com.sa.feature_home.presentation.model.HomeUiEffect
 import com.sa.core.presentation.components.SectionContainerItem
-import com.sa.feature_home.presentation.viewmodel.HomeViewModel
+import com.sa.feature_search.presentation.model.SearchIntent
+import com.sa.feature_search.presentation.model.SearchUiEffect
+import com.sa.feature_search.presentation.viewmodel.SearchViewModel
 import kotlinx.coroutines.flow.collectLatest
 import retrofit2.HttpException
 import java.io.IOException
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(
-    modifier: Modifier = Modifier, viewModel: HomeViewModel = hiltViewModel()
+fun SearchScreen(
+    modifier: Modifier = Modifier, viewModel: SearchViewModel = hiltViewModel()
 ) {
     // Collect the UI state from the ViewModel
     val uiState by viewModel.uiState.collectAsState()
@@ -48,11 +60,14 @@ fun HomeScreen(
     // State for the Snackbar
     val snackbarHostState = remember { SnackbarHostState() }
 
+    // Focus manager to handle keyboard actions
+    val focusManager = LocalFocusManager.current
+
     // Listen for side effects from the ViewModel
     LaunchedEffect(key1 = true) {
         viewModel.effect.collectLatest { effect ->
             when (effect) {
-                is HomeUiEffect.ShowSnackbar -> {
+                is SearchUiEffect.ShowSnackbar -> {
                     snackbarHostState.showSnackbar(
                         message = effect.message, duration = SnackbarDuration.Short
                     )
@@ -62,7 +77,49 @@ fun HomeScreen(
     }
 
     Scaffold(
-        modifier = modifier, snackbarHost = { SnackbarHost(snackbarHostState) }) { paddingValues ->
+        modifier = modifier,
+        snackbarHost = { SnackbarHost(snackbarHostState) },
+        topBar = {
+            // Search field with debounce functionality
+            OutlinedTextField(
+                value = uiState.query,
+                onValueChange = { query ->
+                    viewModel.processIntent(SearchIntent.Search(query))
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                label = { Text("Search") },
+                placeholder = { Text("Enter search term...") },
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = "Search Icon"
+                    )
+                },
+                trailingIcon = {
+                    if (uiState.query.isNotEmpty()) {
+                        IconButton(onClick = {
+                            viewModel.processIntent(SearchIntent.Search(""))
+                        }) {
+                            Icon(
+                                imageVector = Icons.Default.Clear,
+                                contentDescription = "Clear search"
+                            )
+                        }
+                    }
+                },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+                keyboardActions = KeyboardActions(
+                    onSearch = {
+                        // Hide keyboard when search is pressed
+                        focusManager.clearFocus()
+                    }
+                )
+            )
+        }
+    ) { paddingValues ->
         // The main UI content
         Box(
             modifier = Modifier
@@ -71,8 +128,15 @@ fun HomeScreen(
         ) {
             // First check if we have a flow to collect
             if (sectionsPagingItems == null) {
-                // If sectionsFlow is null, it means we're still initializing
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                // If sectionsFlow is null and there's no query, show empty search state
+                if (uiState.query.isEmpty()) {
+                    EmptyContent(
+                        modifier = Modifier.fillMaxSize()
+                    )
+                } else if (uiState.isLoading) {
+                    // Otherwise show loading indicator if we're searching
+                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                }
             }
             // Check the high-level loading state from UI state
             else if (uiState.isLoading) {
@@ -83,7 +147,7 @@ fun HomeScreen(
                 // Show appropriate error UI based on error type
                 ErrorContent(
                     error = uiState.error!!,
-                    onRetry = { viewModel.processIntent(HomeIntent.Refresh) },
+                    onRetry = { viewModel.processIntent(SearchIntent.Refresh) },
                     modifier = Modifier.fillMaxSize()
                 )
             }
@@ -99,70 +163,71 @@ fun HomeScreen(
                         val errorMessage = refreshState.error.message ?: "Unknown error"
                         val errorType = when (refreshState.error) {
                             is IOException -> "Network error"
-                            is HttpException -> {
-                                val code = (refreshState.error as HttpException).code()
-                                if (code >= 500) "Server error" else "Client error"
-                            }
-
+                            is HttpException -> "Server error"
                             else -> "Unknown error"
                         }
 
                         ErrorContent(
                             errorTitle = errorType,
                             errorMessage = errorMessage,
-                            onRetry = { sectionsPagingItems.retry() },
+                            onRetry = { sectionsPagingItems.refresh() },
                             modifier = Modifier.fillMaxSize()
                         )
                     }
 
                     is LoadState.NotLoading -> {
-                        // If not loading and the item count is zero, show an empty state message
+                        // Show empty state when there are no items
                         if (sectionsPagingItems.itemCount == 0) {
-                            EmptyContent(modifier = Modifier.align(Alignment.Center))
+                            EmptyContent(
+                                modifier = Modifier.fillMaxSize()
+                            )
                         } else {
-                            // If data is loaded successfully, display it in a LazyColumn
+                            // Show content when data is available
                             LazyColumn(
                                 modifier = Modifier.fillMaxSize(),
                                 contentPadding = PaddingValues(16.dp),
-                                verticalArrangement = Arrangement.spacedBy(8.dp)
+                                verticalArrangement = Arrangement.spacedBy(16.dp)
                             ) {
                                 items(
                                     count = sectionsPagingItems.itemCount,
-                                    key = { index -> "section-$index" }) { index ->
-                                    val section = sectionsPagingItems[index]
-                                    if (section != null) {
-                                        SectionContainerItem(section = section)
+                                ) { index ->
+                                    val item = sectionsPagingItems[index]
+                                    if (item != null) {
+                                        SectionContainerItem(
+                                            section = item,
+                                        )
                                     }
                                 }
 
-                                // Handle loading state for appending more pages
-                                when (sectionsPagingItems.loadState.append) {
-                                    is LoadState.Loading -> {
-                                        item {
+                                // Show loading footer while loading more items
+                                item {
+                                    when (sectionsPagingItems.loadState.append) {
+                                        is LoadState.Loading -> {
                                             Box(
                                                 modifier = Modifier
                                                     .fillMaxWidth()
-                                                    .padding(vertical = 8.dp),
+                                                    .padding(8.dp),
                                                 contentAlignment = Alignment.Center
                                             ) {
                                                 CircularProgressIndicator()
                                             }
                                         }
-                                    }
 
-                                    is LoadState.Error -> {
-                                        item {
-                                            Button(
-                                                onClick = { sectionsPagingItems.retry() },
-                                                modifier = Modifier.fillMaxWidth()
+                                        is LoadState.Error -> {
+                                            Box(
+                                                modifier = Modifier
+                                                    .fillMaxWidth()
+                                                    .padding(8.dp),
+                                                contentAlignment = Alignment.Center
                                             ) {
-                                                Text("Retry Loading More")
+                                                Button(onClick = { sectionsPagingItems.retry() }) {
+                                                    Text("Retry")
+                                                }
                                             }
                                         }
-                                    }
 
-                                    is LoadState.NotLoading -> {
-                                        // Do nothing when not loading
+                                        is LoadState.NotLoading -> { /* No footer when not loading */
+                                        }
                                     }
                                 }
                             }

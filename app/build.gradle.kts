@@ -48,6 +48,7 @@ dependencies {
 
     // Feature modules
     implementation(project(":feature-home"))
+    implementation(project(":feature-search"))
     implementation(project(":core"))
 
     implementation(libs.androidx.core.ktx)

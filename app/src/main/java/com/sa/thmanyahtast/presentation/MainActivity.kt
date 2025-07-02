@@ -31,6 +31,7 @@ import com.example.thmanyah.core.presentation.ui.SystemBarsController
 import com.sa.core.presentation.theme.ThmanyahTheme
 import com.sa.thmanyahtast.navigation.MainNavigationRoute
 import com.sa.feature_home.presentation.screens.HomeScreen
+import com.sa.feature_search.presentation.screens.SearchScreen
 import com.sa.thmanyahtast.navigation.BottomNavBar
 import com.sa.thmanyahtast.navigation.BottomNavItem
 import com.sa.thmanyahtast.presentation.ui.AppToolBar
@@ -55,7 +56,8 @@ class MainActivity : ComponentActivity() {
                             .padding(systemAwarePadding()),
                         topBar = {
                             AppToolBar()
-                        }, bottomBar = {
+                        },
+                        bottomBar = {
                             HomeBottomNavigation(
                                 modifier = Modifier.fillMaxWidth(), onNavigate = { route ->
                                     mainNavController.navigate(route)
@@ -68,12 +70,10 @@ class MainActivity : ComponentActivity() {
                                 startDestination = MainNavigationRoute.Home
                             ) {
                                 composable<MainNavigationRoute.Home> {
-                                    HomeScreen(
-                                    )
+                                    HomeScreen()
                                 }
                                 composable<MainNavigationRoute.Search> {
-                                    HomeScreen(
-                                    )
+                                    SearchScreen()
                                 }
                                 composable<MainNavigationRoute.Library> {
                                     Text(text = "Library")
