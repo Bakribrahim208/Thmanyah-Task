@@ -1,7 +1,7 @@
 package com.sa.feature_home.presentation.model
 
-import com.sa.feature_home.domain.entities.ContentEntity
-import com.sa.feature_home.domain.entities.HomeSectionEntity
+import com.sa.core.domain.entities.ContentEntity
+import com.sa.core.domain.entities.HomeSectionEntity
 
 
 fun HomeSectionEntity.toSectionUiModel() = SectionUiModel(

@@ -1,4 +1,4 @@
-package com.sa.feature_home.domain.entities
+package com.sa.core.domain.entities
 
 data class HomeSectionEntity(
     val content: List<ContentEntity>,

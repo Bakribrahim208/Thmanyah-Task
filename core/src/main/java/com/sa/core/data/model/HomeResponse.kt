@@ -1,4 +1,4 @@
-package com.sa.feature_home.data.model
+package com.sa.core.data.model
 
 
 import com.google.gson.annotations.SerializedName

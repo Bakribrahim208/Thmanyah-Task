@@ -2,8 +2,8 @@ package com.sa.feature_home.data.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.sa.feature_home.data.source.remote.HomeApiService
-import com.sa.feature_home.domain.entities.HomeSectionEntity
+import com.sa.core.data.source.remote.HomeApiService
+import com.sa.core.domain.entities.HomeSectionEntity
 import retrofit2.HttpException
 import java.io.IOException
 import kotlin.collections.mapNotNull

@@ -1,7 +1,7 @@
 package com.sa.feature_home.presentation.model
 
-import com.sa.feature_home.domain.entities.ContentType
-import com.sa.feature_home.domain.entities.SectionType
+import com.sa.core.domain.entities.ContentType
+import com.sa.core.domain.entities.SectionType
 
 
 data class SectionsListUiModel(

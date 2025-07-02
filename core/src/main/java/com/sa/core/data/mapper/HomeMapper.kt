@@ -1,11 +1,11 @@
-package com.sa.feature_home.data.mapper
+package com.sa.core.data.mapper
 
-import com.sa.feature_home.data.model.Content
-import com.sa.feature_home.data.model.Section
-import com.sa.feature_home.domain.entities.ContentEntity
-import com.sa.feature_home.domain.entities.ContentType
-import com.sa.feature_home.domain.entities.HomeSectionEntity
-import com.sa.feature_home.domain.entities.SectionType
+import com.sa.core.data.model.Content
+import com.sa.core.data.model.Section
+import com.sa.core.domain.entities.ContentEntity
+import com.sa.core.domain.entities.ContentType
+import com.sa.core.domain.entities.HomeSectionEntity
+import com.sa.core.domain.entities.SectionType
 
 fun Section.toSectionEntity(): HomeSectionEntity {
     val contentType = ContentType.fromString(contentType.orEmpty())

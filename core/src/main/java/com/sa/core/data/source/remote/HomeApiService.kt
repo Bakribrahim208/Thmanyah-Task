@@ -1,6 +1,6 @@
-package com.sa.feature_home.data.source.remote
+package com.sa.core.data.source.remote
 
- import com.sa.feature_home.data.model.HomeResponse
+ import com.sa.core.data.model.HomeResponse
  import retrofit2.http.GET
 import retrofit2.http.Query
 

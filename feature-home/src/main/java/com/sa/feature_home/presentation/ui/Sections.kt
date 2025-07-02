@@ -28,8 +28,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.sa.feature_home.domain.entities.ContentType
-import com.sa.feature_home.domain.entities.SectionType
+import com.sa.core.domain.entities.ContentType
+import com.sa.core.domain.entities.SectionType
 import com.sa.feature_home.presentation.components.BigSquareItem
 import com.sa.feature_home.presentation.components.QueueItem
 import com.sa.feature_home.presentation.components.SectionHeaderView
