@@ -43,4 +43,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    // Network
+    implementation(libs.bundles.retrofit.group)
+    api(libs.bundles.retrofit.group)
 }
