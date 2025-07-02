@@ -1,4 +1,4 @@
-package com.sa.thmanyahtast.ui.theme
+package com.sa.core.presentation.theme
 
 import android.app.Activity
 import android.os.Build
@@ -15,27 +15,6 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
-import com.sa.core.presentation.theme.Typography
-// Dark mode colors (as seen in the screenshot)
-val DarkPrimary = Color(0xFFFF5722) // Orange highlight color used on tabs/features
-val DarkBackground = Color(0xFF121212) // Very dark background
-val DarkSurface = Color(0xFF1E1E1E) // Card background color
-val DarkOnSurface = Color(0xFFFFFFFF) // White text on cards
-val DarkSecondary = Color(0xFFFFEB3B) // Yellow accent (for the stars)
-val DarkTertiary = Color(0xFF010531) // Blue accent (seen in some cards)
-
-// Light mode equivalent colors (inverted appropriately)
-val LightPrimary = Color(0xFFFF5722) // Keep the orange as primary
-val LightBackground = Color(0xFFF5F5F5) // Light gray background
-val LightSurface = Color(0xFFFFFFFF) // White card background
-val LightOnSurface = Color(0xFF121212) // Black text on cards
-val LightSecondary = Color(0xFFFFC107) // Slightly darker yellow for visibility
-val LightTertiary = Color(0xFFC9CDE1) // Slightly darker blue for visibility
-
-// Additional colors from the UI
-val GrayText = Color(0xFF757575) // Gray text for timestamps/secondary info
-val DarkGrayBackground = Color(0xFF242424) // Slightly lighter dark background for cards
-val LightGrayBackground = Color(0xFFE0E0E0) // Light gray for card backgrounds in light mode
 
 // Creating the color schemes
 private val DarkColorScheme = darkColorScheme(
@@ -95,7 +74,7 @@ fun ThmanyahTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography, // Using typography from core module
+        typography = Typography,
         content = content
     )
 }
