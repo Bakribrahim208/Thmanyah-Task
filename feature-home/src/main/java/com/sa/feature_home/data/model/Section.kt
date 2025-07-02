@@ -2,8 +2,8 @@ package com.sa.feature_home.data.model
 
 
 import com.google.gson.annotations.SerializedName
-import com.sa.thmanyah.feature.home.data.mapper.toSectionEntity
-import com.sa.thmanyah.feature.home.domain.entities.HomeSectionEntity
+import com.sa.feature_home.data.mapper.toSectionEntity
+import com.sa.feature_home.domain.entities.HomeSectionEntity
 
 data class Section(
     @SerializedName("content")

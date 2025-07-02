@@ -5,6 +5,7 @@ import com.sa.core.domain.error.DomainError
 import com.sa.feature_home.domain.entities.HomeSectionEntity
 import com.sa.feature_home.domain.repository.HomeRepository
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 class GetHomeSectionsUseCase @Inject constructor(
     private val repository: HomeRepository
