@@ -25,8 +25,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.sa.feature_home.presentation.components.EmptyContent
-import com.sa.feature_home.presentation.components.ErrorContent
+import com.sa.core.presentation.components.EmptyContent
+import com.sa.core.presentation.components.ErrorContent
 import com.sa.feature_home.presentation.model.HomeIntent
 import com.sa.feature_home.presentation.model.HomeUiEffect
 import com.sa.feature_home.presentation.ui.SectionContainerItem

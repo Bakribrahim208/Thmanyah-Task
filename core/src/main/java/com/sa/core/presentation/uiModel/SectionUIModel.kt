@@ -1,4 +1,4 @@
-package com.sa.feature_home.presentation.model
+package com.sa.core.presentation.uiModel
 
 import com.sa.core.domain.entities.ContentType
 import com.sa.core.domain.entities.SectionType

@@ -1,4 +1,4 @@
-package com.sa.thmanyah.feature.home.presentation.model//package com.sa.thmanyah.feature.home.presentation.model
+package com.sa.core.presentation.uiModel
 //
 //
 //import com.sa.thmanyah.feature.home.domain.entities.ContentEntity

@@ -1,4 +1,4 @@
-package com.sa.feature_home.presentation.components
+package com.sa.core.presentation.components
 
 
 import androidx.compose.foundation.layout.Arrangement

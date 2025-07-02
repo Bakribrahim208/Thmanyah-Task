@@ -30,14 +30,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sa.core.domain.entities.ContentType
 import com.sa.core.domain.entities.SectionType
-import com.sa.feature_home.presentation.components.BigSquareItem
-import com.sa.feature_home.presentation.components.QueueItem
-import com.sa.feature_home.presentation.components.SectionHeaderView
-import com.sa.feature_home.presentation.components.SquareItem
-import com.sa.feature_home.presentation.components.TwoLinesGridItem
+import com.sa.core.presentation.components.BigSquareItem
+import com.sa.core.presentation.components.QueueItem
+import com.sa.core.presentation.components.SectionHeaderView
+import com.sa.core.presentation.components.SquareItem
+import com.sa.core.presentation.components.TwoLinesGridItem
 
-import com.sa.feature_home.presentation.model.SectionContentUiModel
-import com.sa.feature_home.presentation.model.SectionUiModel
+import com.sa.core.presentation.uiModel.SectionContentUiModel
+import com.sa.core.presentation.uiModel.SectionUiModel
 
 
 @Composable

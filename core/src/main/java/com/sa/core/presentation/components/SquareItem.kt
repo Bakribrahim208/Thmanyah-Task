@@ -1,4 +1,4 @@
-package com.sa.feature_home.presentation.components
+package com.sa.core.presentation.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,7 +24,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sa.core.presentation.AppImage
-import com.sa.feature_home.presentation.model.SectionContentUiModel
+import com.sa.core.presentation.uiModel.SectionContentUiModel
 
 @Composable
 fun SquareItem(

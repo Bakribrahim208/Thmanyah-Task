@@ -1,4 +1,4 @@
-package com.sa.feature_home.presentation.components
+package com.sa.core.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -22,7 +22,7 @@ import com.sa.core.presentation.theme.colorBlackSemiTransparent10
 import com.sa.core.presentation.theme.colorBlackSemiTransparent25
 import com.sa.core.presentation.theme.colorBlackSemiTransparent50
 import com.sa.core.presentation.theme.colorTransparent
-import com.sa.feature_home.presentation.model.SectionContentUiModel
+import com.sa.core.presentation.uiModel.SectionContentUiModel
 
 @Composable
 fun BigSquareItem(

@@ -1,6 +1,8 @@
 package com.sa.feature_home.presentation.model
 
 import androidx.paging.PagingData
+import com.sa.core.presentation.uiModel.SectionError
+import com.sa.core.presentation.uiModel.SectionUiModel
 import kotlinx.coroutines.flow.Flow
 
 
@@ -15,5 +17,5 @@ import kotlinx.coroutines.flow.Flow
 data class HomeUiState(
     val sectionsFlow: Flow<PagingData<SectionUiModel>>? = null,
     val isLoading: Boolean = true,
-    val error: HomeError? = null
+    val error: SectionError? = null
 )

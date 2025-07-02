@@ -1,4 +1,4 @@
-package com.sa.feature_home.presentation.components
+package com.sa.core.presentation.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,36 +18,36 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.sa.feature_home.presentation.model.HomeError
+import com.sa.core.presentation.uiModel.SectionError
 
 @Composable
 fun ErrorContent(
-    error: HomeError, onRetry: () -> Unit, modifier: Modifier = Modifier
+    error: SectionError, onRetry: () -> Unit, modifier: Modifier = Modifier
 ) {
     val (icon, title, message) = when (error) {
-        is HomeError.Network -> Triple(
+        is SectionError.Network -> Triple(
             Icons.Default.AccountBox,
             "Network Error",
             "Please check your internet connection and try again."
         )
 
-        is HomeError.Server -> Triple(
+        is SectionError.Server -> Triple(
             Icons.Default.AccountBox,
             "Server Error",
             "We're experiencing server issues. Please try again later.\n${error.message}"
         )
 
-        is HomeError.Client -> Triple(
+        is SectionError.Client -> Triple(
             Icons.Default.AccountBox,
             "Request Error",
             "Something went wrong with the request.\n${error.message}"
         )
 
-        is HomeError.EmptyData -> Triple(
+        is SectionError.EmptyData -> Triple(
             Icons.Default.AccountBox, "No Data", "There's no content to display right now."
         )
 
-        is HomeError.Unknown -> Triple(
+        is SectionError.Unknown -> Triple(
             Icons.Default.AccountBox,
             "Unknown Error",
             "An unexpected error occurred.\n${error.message}"

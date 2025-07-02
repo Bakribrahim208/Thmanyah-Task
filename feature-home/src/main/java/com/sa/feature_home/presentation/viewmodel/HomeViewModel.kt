@@ -5,11 +5,11 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.sa.feature_home.domain.usecase.GetHomeSectionsUseCase
-import com.sa.feature_home.presentation.model.HomeError
+import com.sa.core.presentation.uiModel.SectionError
 import com.sa.feature_home.presentation.model.HomeIntent
 import com.sa.feature_home.presentation.model.HomeUiEffect
 import com.sa.feature_home.presentation.model.HomeUiState
-import com.sa.feature_home.presentation.model.toSectionUiModel
+import com.sa.core.presentation.uiModel.toSectionUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -81,15 +81,15 @@ class HomeViewModel @Inject constructor(
             } catch (e: Exception) {
                 // Handle any exceptions
                 val errorType = when (e) {
-                    is IOException -> HomeError.Network
+                    is IOException -> SectionError.Network
                     is HttpException -> {
                         when (e.code()) {
-                            in 500..599 -> HomeError.Server(e.message())
-                            in 400..499 -> HomeError.Client(e.message())
-                            else -> HomeError.Unknown(e.message())
+                            in 500..599 -> SectionError.Server(e.message())
+                            in 400..499 -> SectionError.Client(e.message())
+                            else -> SectionError.Unknown(e.message())
                         }
                     }
-                    else -> HomeError.Unknown(e.message ?: "An unknown error occurred")
+                    else -> SectionError.Unknown(e.message ?: "An unknown error occurred")
                 }
 
                 _uiState.update {
