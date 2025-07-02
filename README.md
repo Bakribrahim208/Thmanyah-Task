@@ -124,6 +124,6 @@ project-root/
 
 ## Demo Video
 
-https://github.com/Bakribrahim208/Thmanyah-Task/assets/main/Screen_recording_20250702_224117.mp4
+https://github.com/Bakribrahim208/Thmanyah-Task/blob/main/Screen_recording_20250702_224117.mp4
 
 ---
