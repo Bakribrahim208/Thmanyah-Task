@@ -1,0 +1,102 @@
+package com.sa.feature_home.presentation.components
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import com.sa.feature_home.presentation.model.HomeError
+
+@Composable
+fun ErrorContent(
+    error: HomeError, onRetry: () -> Unit, modifier: Modifier = Modifier
+) {
+    val (icon, title, message) = when (error) {
+        is HomeError.Network -> Triple(
+            Icons.Default.AccountBox,
+            "Network Error",
+            "Please check your internet connection and try again."
+        )
+
+        is HomeError.Server -> Triple(
+            Icons.Default.AccountBox,
+            "Server Error",
+            "We're experiencing server issues. Please try again later.\n${error.message}"
+        )
+
+        is HomeError.Client -> Triple(
+            Icons.Default.AccountBox,
+            "Request Error",
+            "Something went wrong with the request.\n${error.message}"
+        )
+
+        is HomeError.EmptyData -> Triple(
+            Icons.Default.AccountBox, "No Data", "There's no content to display right now."
+        )
+
+        is HomeError.Unknown -> Triple(
+            Icons.Default.AccountBox,
+            "Unknown Error",
+            "An unexpected error occurred.\n${error.message}"
+        )
+    }
+
+    ErrorContent(
+        icon = icon,
+        errorTitle = title,
+        errorMessage = message,
+        onRetry = onRetry,
+        modifier = modifier
+    )
+}
+
+@Composable
+fun ErrorContent(
+    errorTitle: String,
+    errorMessage: String,
+    onRetry: () -> Unit,
+    modifier: Modifier = Modifier,
+    icon: ImageVector = Icons.Default.AccountBox
+) {
+    Column(
+        modifier = modifier.padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            modifier = Modifier.size(48.dp),
+            tint = MaterialTheme.colorScheme.error
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            text = errorTitle,
+            style = MaterialTheme.typography.titleLarge,
+            color = MaterialTheme.colorScheme.error
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = errorMessage,
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.onBackground
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        Button(onClick = onRetry) {
+            Text("Retry")
+        }
+    }
+}

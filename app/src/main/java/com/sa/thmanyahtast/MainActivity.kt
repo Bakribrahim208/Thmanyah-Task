@@ -20,14 +20,15 @@ class MainActivity : ComponentActivity() {
         setContent {
             ThmanyahTastTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    HomeScreen(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
             }
         }
     }
+
+
 }
 
 @Composable
