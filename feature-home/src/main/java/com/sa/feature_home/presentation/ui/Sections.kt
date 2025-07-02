@@ -1,4 +1,4 @@
-package com.sa.thmanyah.feature.home.presentation.ui
+package com.sa.feature_home.presentation.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

@@ -69,8 +69,6 @@ class HomeRepositoryImplTest {
         val testRepo = object : HomeRepositoryImpl(api) {
             // Override to expose the paging source
             val pagingSource = HomePagingSource(api)
-
-            fun createPagingSource() = pagingSource
         }
 
         // Act - Trigger the load directly on the paging source

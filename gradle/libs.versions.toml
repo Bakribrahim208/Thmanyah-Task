@@ -69,8 +69,8 @@ paging-common = { module = "androidx.paging:paging-common", version.ref = "pagin
 paging-common-ktx = { module = "androidx.paging:paging-common-ktx", version.ref = "paging" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 androidx-paging-compose-android = { group = "androidx.paging", name = "paging-compose-android", version.ref = "pagingComposeAndroid" }
-coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilCompose" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
+coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilCompose" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 [plugins]

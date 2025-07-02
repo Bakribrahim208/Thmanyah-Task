@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
@@ -40,7 +39,6 @@ object SystemInsetsUtil {
      */
     @Composable
     fun getNavigationBarPadding(): Dp {
-        val density = LocalDensity.current
         val navigationBarInsets = WindowInsets.navigationBars
             .asPaddingValues()
             .calculateBottomPadding()

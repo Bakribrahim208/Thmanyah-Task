@@ -28,7 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.sa.core.presentation.DefaultImage
+import com.sa.core.presentation.AppImage
 import com.sa.feature_home.presentation.model.SectionContentUiModel
 
 @Composable
@@ -45,7 +45,7 @@ fun TwoLinesGridItem(
             .height(80.dp)
             .clickable(onClick = onItemClick),
     ) {
-        DefaultImage(
+        AppImage(
             imageUrl = item.avatarUrl,
             modifier = Modifier
                 .align(Alignment.CenterVertically)

@@ -23,7 +23,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.sa.core.presentation.DefaultImage
+import com.sa.core.presentation.AppImage
 import com.sa.feature_home.presentation.model.SectionContentUiModel
 
 @Composable
@@ -40,7 +40,7 @@ fun SquareItem(
             colors = CardDefaults.cardColors(containerColor = Color.Transparent)
         ) {
             Box {
-                DefaultImage(
+                AppImage(
                     imageUrl = itemContent.avatarUrl,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()

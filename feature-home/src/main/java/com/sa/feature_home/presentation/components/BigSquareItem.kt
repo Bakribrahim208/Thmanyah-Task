@@ -1,5 +1,6 @@
 package com.sa.feature_home.presentation.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,13 +9,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.sa.core.presentation.DefaultImage
+import com.sa.core.presentation.AppImage
+import com.sa.core.presentation.theme.colorBlackSemiTransparent
+import com.sa.core.presentation.theme.colorBlackSemiTransparent10
+import com.sa.core.presentation.theme.colorBlackSemiTransparent25
+import com.sa.core.presentation.theme.colorBlackSemiTransparent50
+import com.sa.core.presentation.theme.colorTransparent
 import com.sa.feature_home.presentation.model.SectionContentUiModel
 
 @Composable
@@ -23,7 +30,7 @@ fun BigSquareItem(
     itemContent: SectionContentUiModel,
 ) {
     Box(modifier = modifier) {
-        DefaultImage(
+        AppImage(
             imageUrl = itemContent.avatarUrl,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxWidth()
@@ -32,17 +39,17 @@ fun BigSquareItem(
         Column(
             Modifier
                 .fillMaxWidth()
-//                .background(
-//                    brush = Brush.verticalGradient(
-//                        colors = listOf(
-//                            colorTransparent,
-//                            colorBlackSemiTransparent10,
-//                            colorBlackSemiTransparent25,
-//                            colorBlackSemiTransparent50,
-//                            colorBlackSemiTransparent,
-//                        )
-//                    ),
-//                )
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            colorTransparent,
+                            colorBlackSemiTransparent10,
+                            colorBlackSemiTransparent25,
+                            colorBlackSemiTransparent50,
+                            colorBlackSemiTransparent,
+                        )
+                    ),
+                )
                 .padding(horizontal = 12.dp)
                 .padding(bottom = 12.dp, top = 16.dp)
 

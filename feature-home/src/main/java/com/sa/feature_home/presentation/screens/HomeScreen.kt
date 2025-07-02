@@ -29,7 +29,7 @@ import com.sa.feature_home.presentation.components.EmptyContent
 import com.sa.feature_home.presentation.components.ErrorContent
 import com.sa.feature_home.presentation.model.HomeIntent
 import com.sa.feature_home.presentation.model.HomeUiEffect
-import com.sa.thmanyah.feature.home.presentation.ui.SectionContainerItem
+import com.sa.feature_home.presentation.ui.SectionContainerItem
 import com.sa.feature_home.presentation.viewmodel.HomeViewModel
 import kotlinx.coroutines.flow.collectLatest
 import retrofit2.HttpException
@@ -136,7 +136,7 @@ fun HomeScreen(
                                 }
 
                                 // Handle loading state for appending more pages
-                                when (val appendState = sectionsPagingItems.loadState.append) {
+                                when (sectionsPagingItems.loadState.append) {
                                     is LoadState.Loading -> {
                                         item {
                                             Box(

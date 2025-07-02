@@ -80,6 +80,7 @@ dependencies {
     testImplementation(libs.paging.common)
     testImplementation(libs.paging.common.ktx)
     implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
