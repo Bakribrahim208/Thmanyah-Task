@@ -20,21 +20,25 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.thmanyah.core.presentation.ui.SystemBarsController
 import com.sa.core.presentation.theme.ThmanyahTheme
+import com.sa.thmanyahtast.data.preferences.ThemeMode
 import com.sa.thmanyahtast.navigation.MainNavigationRoute
 import com.sa.feature_home.presentation.screens.HomeScreen
 import com.sa.feature_search.presentation.screens.SearchScreen
 import com.sa.thmanyahtast.navigation.BottomNavBar
 import com.sa.thmanyahtast.navigation.BottomNavItem
 import com.sa.thmanyahtast.presentation.ui.AppToolBar
+import com.sa.thmanyahtast.presentation.viewmodel.ThemeViewModel
 import com.sa.thmanyahtast.utils.systemAwarePadding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,8 +49,18 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val mainNavController = rememberNavController()
-            SystemBarsController(darkTheme = isSystemInDarkTheme())
-            ThmanyahTheme {
+            val themeViewModel: ThemeViewModel = hiltViewModel()
+            val themeMode by themeViewModel.themeMode.collectAsState()
+
+            // Determine if dark theme should be used based on theme preference
+            val darkTheme = when (themeMode) {
+                ThemeMode.DARK -> true
+                ThemeMode.LIGHT -> false
+                ThemeMode.SYSTEM -> isSystemInDarkTheme()
+            }
+
+            SystemBarsController(darkTheme = darkTheme)
+            ThmanyahTheme(darkTheme = darkTheme) {
                 Surface(
                     modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
