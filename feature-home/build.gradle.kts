@@ -1,6 +1,12 @@
+
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.application) apply false
+    id("com.android.library")
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.dagger.hilt)
+    alias(libs.plugins.kotlin.serialization)
+    kotlin("kapt")
 }
 
 android {
@@ -8,11 +14,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.sa.feature_home"
         minSdk = 24
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,6 +38,8 @@ android {
 }
 
 dependencies {
+    // Core module dependency
+    implementation(project(":core"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -43,7 +47,20 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Hilt
+    implementation(libs.google.dagger.hilt)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.paging.compose.android)
+    kapt(libs.google.dagger.hilt.compiler)
+
     // Network
     implementation(libs.bundles.retrofit.group)
     api(libs.bundles.retrofit.group)
+
+    // Paging
+    implementation(libs.paging.common)
+    implementation(libs.paging.runtime)
+    implementation(libs.paging.common.ktx)
+
 }
