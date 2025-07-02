@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.sa.thmanyahtast.ui.theme.colorTransparent
+import com.sa.core.presentation.theme.colorTransparent
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 

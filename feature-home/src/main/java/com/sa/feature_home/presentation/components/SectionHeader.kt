@@ -35,7 +35,7 @@ fun SectionHeaderView(
         // Main title
         Text(
             text = title,
-            color =  titleColor,
+            color = titleColor,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Start

@@ -28,12 +28,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.thmanyah.core.presentation.ui.SystemBarsController
+import com.sa.core.presentation.theme.ThmanyahTheme
 import com.sa.thmanyahtast.navigation.MainNavigationRoute
 import com.sa.feature_home.presentation.screens.HomeScreen
 import com.sa.thmanyahtast.navigation.BottomNavBar
 import com.sa.thmanyahtast.navigation.BottomNavItem
 import com.sa.thmanyahtast.presentation.ui.AppToolBar
-import com.sa.thmanyahtast.ui.theme.ThmanyahTastTheme
 import com.sa.thmanyahtast.utils.systemAwarePadding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,8 +45,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val mainNavController = rememberNavController()
             SystemBarsController(darkTheme = isSystemInDarkTheme())
-
-            ThmanyahTastTheme {
+            ThmanyahTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
@@ -54,7 +53,6 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(systemAwarePadding()),
-                        //    contentWindowInsets = WindowInsets(0, 0, 0, 0),
                         topBar = {
                             AppToolBar()
                         }, bottomBar = {
@@ -134,5 +132,3 @@ fun HomeBottomNavigation(
 
     BottomNavBar(modifier = modifier, items = items, onNavigate = onNavigate)
 }
-
-

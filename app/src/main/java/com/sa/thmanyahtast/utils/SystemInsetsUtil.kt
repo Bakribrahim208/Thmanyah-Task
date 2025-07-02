@@ -79,7 +79,7 @@ object SystemInsetsUtil {
     fun contentPadding(
         additionalTop: Dp = 16.dp,
         additionalBottom: Dp = 16.dp,
-        horizontalPadding: Dp = 16.dp
+        horizontalPadding: Dp = 0.dp
     ): PaddingValues {
         return PaddingValues(
             top = getStatusBarPadding() + additionalTop,
@@ -112,27 +112,5 @@ fun systemAwarePadding(
     return SystemInsetsUtil.contentPadding(
         additionalTop = additionalTop,
         additionalBottom = additionalBottom,
-        horizontalPadding = horizontalPadding
     )
 }
-
-/**
- * Usage example:
- *
- * @Composable
- * fun MyScreen() {
- *     // Apply to a LazyColumn's contentPadding
- *     LazyColumn(
- *         contentPadding = systemAwarePadding()
- *     ) {
- *         // Content items
- *     }
- *
- *     // OR apply to a normal Column with Modifier.padding
- *     Column(
- *         modifier = Modifier.padding(systemAwarePadding())
- *     ) {
- *         // Content
- *     }
- * }
- */
